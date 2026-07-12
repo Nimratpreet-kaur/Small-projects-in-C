@@ -71,3 +71,19 @@ void addName()
     scanf("%s",p[count].e_mail);
     count ++;
 }
+void list()
+{
+    printf("\t***LIST***\n");
+    for (int i =0;i<count;i++)
+    {
+        printf("Name:%s\n",p[i].name);
+        printf("Address:%s\n",p[i].address);
+        printf("Father's Name:%s\n",p[i].father_name);
+        printf("Mother's Name:%s\n",p[i].mother_name);
+        printf("Mobile number:%ld\n",p[i].mobile_no);
+        printf("Sex:%s\n",p[i].sex);
+        printf("E-mail:%s\n",p[i].e_mail);
+        printf("\n");
+
+    }
+}
