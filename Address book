@@ -103,16 +103,16 @@ void printPerson(int i)
 void modify()
 {
     printf("Enter mobile nummber of person you wish to modify:");
-    long int modi_number;
-    scanf("%ld", &modi_number);
+    long int modify_number;
+    scanf("%ld", &modify_number);
     int n = 0;
     for (int i = 0; i < count; i++)
     {
-        if (modi_number != p[i].mobile_no)
+        if (modify_number != p[i].mobile_no)
         {
             n++;
         }
-        else if (modi_number == p[i].mobile_no)
+        else if (modify_number == p[i].mobile_no)
         {
             printf("\t***Existing information***\n");
             printPerson(n);
@@ -127,5 +127,30 @@ void modify()
             printf("\n");
             break;
         }
+    }
+}
+
+void search()
+{
+    char search_name[30];
+    printf("Enter Name to search:");
+    scanf("%s",search_name);
+    int len =strlen(search_name);
+    int count = 0;
+    for(int i=0;i<len;i++)
+    {
+        if(search_name == p[i].name){
+            printf("\tDetails of %s\n",search_name);
+            count++;
+            printPerson(i);
+        }
+    }
+    if(count==0)
+    {
+        printf("No Person named %s found\n",search_name);
+    }
+    if (count>1)
+    {
+        printf("\t ***%d people named %s found***\n",count,search_name);
     }
 }
