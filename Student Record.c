@@ -58,7 +58,7 @@ void addstudent()
 {
 
     printf("Name:");
-    scanf("%s", &s[count].name);
+    scanf("%s", s[count].name);
 
     printf("Roll Number: ");
     scanf("%d", &s[count].roll);
