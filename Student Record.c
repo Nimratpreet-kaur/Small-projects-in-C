@@ -59,13 +59,13 @@ void addstudent()
 {
 
     printf("Name:");
-    fgets(*s[count].name,50,stdin);
+    fgets(s[count].name,50,stdin);
 
     printf("Roll Number: ");
-    scanf("%d", &s[count].roll);
+    scanf("%d",s[count].roll);
 
     printf("CGPA :");
-    scanf("%f", &s[count].cgpa);
+    scanf("%f",s[count].cgpa);
 
     count++;
     printf("Student added successfully! \n");
@@ -118,9 +118,9 @@ void update()
         if (up == s[i].roll)
         {
             printf("Enter new name:");
-            fgets(*s[i].name,50,stdin);
+            fgets(s[i].name,50,stdin);
             printf("Enter new CGPA:");
-            scanf("%f", &s[i].cgpa);
+            scanf("%f",s[i].cgpa);
             found = 1;
             printf("*** Record updated successfully ***\n");
             break;
