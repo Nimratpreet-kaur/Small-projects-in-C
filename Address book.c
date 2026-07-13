@@ -154,3 +154,24 @@ void search()
         printf("\t ***%d people named %s found***\n",count,search_name);
     }
 }
+
+void del()
+{
+    long int search_no;
+    printf("Enter Phone Number :\n");
+    scanf("%ld",&search_no);
+    int a;//index of matched number.
+    for(int i =0; i<15;i++)
+    {
+        if (search_no == p[i].mobile_no)
+        {
+            a = i;
+            count--;
+        }
+    }
+    for(int i=a;i<count;i++)
+    {
+        p[i]=p[i+1];
+    }
+    printf("\t***Information Deleted seccessfully***\n");
+}
