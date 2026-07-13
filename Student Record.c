@@ -1,5 +1,6 @@
 // student record management system
 #include <stdio.h>
+#include <string.h>
 typedef struct student
 {
     int roll;
@@ -58,7 +59,7 @@ void addstudent()
 {
 
     printf("Name:");
-    scanf("%s", s[count].name);
+    fgets(*s[count].name,50,stdin);
 
     printf("Roll Number: ");
     scanf("%d", &s[count].roll);
@@ -117,7 +118,7 @@ void update()
         if (up == s[i].roll)
         {
             printf("Enter new name:");
-            scanf("%s", &s[i].name);
+            fgets(*s[i].name,50,stdin);
             printf("Enter new CGPA:");
             scanf("%f", &s[i].cgpa);
             found = 1;
