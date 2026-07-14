@@ -58,7 +58,7 @@ int main()
 void addstudent()
 {
 
-    printf("Name:");
+    printf("Name:\n");
     fgets(s[count].name,50,stdin);
 
     printf("Roll Number: ");
@@ -117,7 +117,7 @@ void update()
     {
         if (up == s[i].roll)
         {
-            printf("Enter new name:");
+            printf("Enter new name:\n");
             fgets(s[i].name,50,stdin);
             printf("Enter new CGPA:");
             scanf("%f",s[i].cgpa);
