@@ -9,6 +9,7 @@ typedef struct student
 } stu;
 stu s[100]; // 100 max students;
 int count = 0;
+void cleanBuffer();/// Helper function to clear leftover characters in the input buffer
 void addstudent();
 void displayAllStudents();
 void searchStudent();
@@ -23,6 +24,13 @@ int main()
     {
         printf("To add a new student enter 1,\nTo display all students enter 2,\nTo search a student enter 3,\nTo update information of any student enter 4,\nTo delete information of a student enter 5\nTo exit enter 6.\n");
         scanf("%d", &todo);
+        if(todo != 1)
+        {
+            cleanBuffer();
+            printf("Invalid input\n");
+            continue;
+        }
+        cleanBuffer();
         if (todo == 1)
         {
             addstudent();
@@ -55,6 +63,11 @@ int main()
     return 0;
 }
 
+void cleanBuffer()
+{
+    int c;
+    while((c = getchar()) != '\n' && c != EOF);
+}
 void addstudent()
 {
 
@@ -62,10 +75,10 @@ void addstudent()
     fgets(s[count].name,50,stdin);
 
     printf("Roll Number: ");
-    scanf("%d",s[count].roll);
+    scanf("%d",&s[count].roll);
 
     printf("CGPA :");
-    scanf("%f",s[count].cgpa);
+    scanf("%f",&s[count].cgpa);
 
     count++;
     printf("Student added successfully! \n");
@@ -120,7 +133,7 @@ void update()
             printf("Enter new name:\n");
             fgets(s[i].name,50,stdin);
             printf("Enter new CGPA:");
-            scanf("%f",s[i].cgpa);
+            scanf("%f",&s[i].cgpa);
             found = 1;
             printf("*** Record updated successfully ***\n");
             break;
