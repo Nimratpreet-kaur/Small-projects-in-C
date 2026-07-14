@@ -24,12 +24,6 @@ int main()
     {
         printf("To add a new student enter 1,\nTo display all students enter 2,\nTo search a student enter 3,\nTo update information of any student enter 4,\nTo delete information of a student enter 5\nTo exit enter 6.\n");
         scanf("%d", &todo);
-        if(todo != 1)
-        {
-            cleanBuffer();
-            printf("Invalid input\n");
-            continue;
-        }
         cleanBuffer();
         if (todo == 1)
         {
@@ -71,7 +65,7 @@ void cleanBuffer()
 void addstudent()
 {
 
-    printf("Name:\n");
+    printf("Name:");
     fgets(s[count].name,50,stdin);
 
     printf("Roll Number: ");
