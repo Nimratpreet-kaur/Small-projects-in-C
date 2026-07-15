@@ -14,6 +14,7 @@ typedef struct person
 } per;
 per p[100];
 int count = 0;
+void cleanBuffer();
 void addName();
 void list();
 void printPerson(int i);
@@ -56,22 +57,33 @@ int main()
         }
     }
 }
+void cleanBuffer()
+{
+    int c;
+    while((c =getchar) != '\n' && c !=EOF);
+}
 void addName()
 {
     printf("Name:");
-    scanf("%s", p[count].name);
+    fgets(p[count].name,30,stdin);
+    cleanBuffer();
     printf("Adress:");
-    scanf("%s", p[count].address);
+    fgets(p[count].address,50,stdin);
+    cleanBuffer();
     printf("Father's Name:");
-    scanf("%s", p[count].father_name);
+    fgets(p[count].father_name,30,stdin);
+    cleanBuffer();
     printf("Mother's Name:");
-    scanf("%s", p[count].mother_name);
+    fgets(p[count].mother_name,30,stdin);
+    cleanBuffer();
     printf("Mobile Number:");
     scanf("%ld", &p[count].mobile_no);
     printf("Sex:");
-    scanf("%s", p[count].sex);
+    fgets(p[count].sex,10,stdin);
+    cleanBuffer();
     printf("E-mail:");
-    scanf("%s", p[count].e_mail);
+    fgets(p[count].e_mail,50,stdin);
+    cleanBuffer();
     count++;
 }
 void list()
@@ -117,13 +129,26 @@ void modify()
             printf("\t***Existing information***\n");
             printPerson(n);
             printf("Enter new Information\n");
-            printf("Name:%s\n", p[n].name);
-            printf("Address:%s\n", p[n].address);
-            printf("Father's Name:%s\n", p[n].father_name);
-            printf("Mother's Name:%s\n", p[n].mother_name);
-            printf("Mobile number:%ld\n", p[n].mobile_no);
-            printf("Sex:%s\n", p[n].sex);
-            printf("E-mail:%s\n", p[n].e_mail);
+            printf("Name:");
+            fgets(p[i].name,30,stdin);
+            cleanBuffer();
+            printf("Address:");
+            fgets(p[i].address,50,stdin);
+            cleanBuffer();
+            printf("Father's Name:");
+            fgets(p[i].father_name,30,stdin);
+            cleanBuffer();
+            printf("Mother's Name:");
+            fgets(p[i].mother_name,30,stdin);
+            cleanBuffer();
+            printf("Mobile number:");
+            scanf("%ld",&p[i].mobile_no);
+            printf("Sex:");
+            fgets(p[count].sex,10,stdin);
+            cleanBuffer();
+            printf("E-mail:");
+            fgets(p[count].e_mail,50,stdin);
+            cleanBuffer();
             printf("\n");
             break;
         }
@@ -134,7 +159,8 @@ void search()
 {
     char search_name[30];
     printf("Enter Name to search:");
-    scanf("%s",search_name);
+    fgets(search_name,30,stdin);
+    cleanBuffer();
     int len =strlen(search_name);
     int count = 0;
     for(int i=0;i<len;i++)
