@@ -60,7 +60,7 @@ int main()
 void cleanBuffer()
 {
     int c;
-    while((c =getchar) != '\n' && c !=EOF);
+    while((c = getchar()) != '\n' && c !=EOF);
 }
 void addName()
 {
