@@ -8,7 +8,7 @@ typedef struct person
     char address[50];
     char father_name[30];
     char mother_name[30];
-    long int mobile_no;
+    long long int mobile_no;
     char sex[10];
     char e_mail[50];
 } per;
@@ -105,7 +105,7 @@ void addName()
     fgets(p[count].mother_name,30,stdin);
     removeNewline(p[count].mother_name);
     printf("Mobile Number:");
-    scanf("%ld", &p[count].mobile_no);
+    scanf("%lld", &p[count].mobile_no);
     cleanBuffer();
     printf("Sex:");
     fgets(p[count].sex,10,stdin);
@@ -124,7 +124,7 @@ void list()
         printf("Address:%s\n", p[i].address);
         printf("Father's Name:%s\n", p[i].father_name);
         printf("Mother's Name:%s\n", p[i].mother_name);
-        printf("Mobile number:%ld\n", p[i].mobile_no);
+        printf("Mobile number:%lld\n", p[i].mobile_no);
         printf("Sex:%s\n", p[i].sex);
         printf("E-mail:%s\n", p[i].e_mail);
         printf("\n");
@@ -136,7 +136,7 @@ void printPerson(int i)
     printf("Address:%s\n", p[i].address);
     printf("Father's Name:%s\n", p[i].father_name);
     printf("Mother's Name:%s\n", p[i].mother_name);
-    printf("Mobile number:%ld\n", p[i].mobile_no);
+    printf("Mobile number:%lld\n", p[i].mobile_no);
     printf("Sex:%s\n", p[i].sex);
     printf("E-mail:%s\n", p[i].e_mail);
     printf("\n");
@@ -144,8 +144,8 @@ void printPerson(int i)
 void modify()
 {
     printf("Enter mobile nummber of person you wish to modify:");
-    long int modify_number;
-    scanf("%ld", &modify_number);
+    long long int modify_number;
+    scanf("%lld", &modify_number);
     cleanBuffer();
     int n = 0;
     for (int i = 0; i < count; i++)
@@ -172,7 +172,7 @@ void modify()
             fgets(p[i].mother_name,30,stdin);
             removeNewline(p[i].mother_name);
             printf("Mobile number:");
-            scanf("%ld",&p[i].mobile_no);
+            scanf("%lld",&p[i].mobile_no);
             cleanBuffer();//to clean new line
             printf("Sex:");
             fgets(p[i].sex,10,stdin);
@@ -180,7 +180,7 @@ void modify()
             printf("E-mail:");
             fgets(p[i].e_mail,50,stdin);
             removeNewline(p[i].e_mail);
-            printf("Information Updated!");
+            printf("Information Updated!\n");
             break;
         }
     }
@@ -214,9 +214,9 @@ void search()
 
 void del()
 {
-    long int search_no;
+    long long int search_no;
     printf("Enter Phone Number :\n");
-    scanf("%ld",&search_no);
+    scanf("%lld",&search_no);
     cleanBuffer();
     int found = -1;
     for (int i = 0;i< count;i++)
@@ -228,7 +228,7 @@ void del()
     }
     if(found==-1)
     {
-        printf("Phone Number %ld not found!",search_no);
+        printf("Phone Number %lld not found!",search_no);
     }
     else
     {
