@@ -94,25 +94,25 @@ void addName()
     }
     printf("Name:");
     fgets(p[count].name,30,stdin);
-    cleanBuffer();
+    removeNewline(p[count].name);
     printf("Adress:");
     fgets(p[count].address,50,stdin);
-    cleanBuffer();
+    removeNewline(p[count].address);
     printf("Father's Name:");
     fgets(p[count].father_name,30,stdin);
-    cleanBuffer();
+    removeNewline(p[count].father_name);
     printf("Mother's Name:");
     fgets(p[count].mother_name,30,stdin);
-    cleanBuffer();
+    removeNewline(p[count].mother_name);
     printf("Mobile Number:");
     scanf("%ld", &p[count].mobile_no);
     cleanBuffer();
     printf("Sex:");
     fgets(p[count].sex,10,stdin);
-    cleanBuffer();
+    removeNewline(p[count].sex);
     printf("E-mail:");
     fgets(p[count].e_mail,50,stdin);
-    cleanBuffer();
+    removeNewline(p[count].e_mail);
     count++;
 }
 void list()
@@ -161,26 +161,26 @@ void modify()
             printf("Enter new Information\n");
             printf("Name:");
             fgets(p[i].name,30,stdin);
-            cleanBuffer();
+            removeNewline(p[i].name);
             printf("Address:");
             fgets(p[i].address,50,stdin);
-            cleanBuffer();
+            removeNewline(p[i].address);
             printf("Father's Name:");
             fgets(p[i].father_name,30,stdin);
-            cleanBuffer();
+            removeNewline(p[i].father_name);
             printf("Mother's Name:");
             fgets(p[i].mother_name,30,stdin);
-            cleanBuffer();
+            removeNewline(p[i].mother_name);
             printf("Mobile number:");
             scanf("%ld",&p[i].mobile_no);
             cleanBuffer();//to clean new line
             printf("Sex:");
-            fgets(p[count].sex,10,stdin);
-            cleanBuffer();
+            fgets(p[i].sex,10,stdin);
+            removeNewline(p[i].sex);
             printf("E-mail:");
-            fgets(p[count].e_mail,50,stdin);
-            cleanBuffer();
-            printf("\n");
+            fgets(p[i].e_mail,50,stdin);
+            removeNewline(p[i].e_mail);
+            printf("Information Updated!");
             break;
         }
     }
@@ -191,22 +191,22 @@ void search()
     char search_name[30];
     printf("Enter Name to search:");
     fgets(search_name,30,stdin);
-    cleanBuffer();
-    int len =strlen(search_name);
-    int count = 0;
-    for(int i=0;i<len;i++)
+    removeNewline(search_name);
+    int matches =0;
+    for(int i=0;i<count;i++)
     {
-        if(search_name == p[i].name){
-            printf("\tDetails of %s\n",search_name);
-            count++;
+        if(strcmp(search_name,p[i].name)==0)
+        {
+            Printf("Details of %s\n",search_name);
             printPerson(i);
+            matches++;
         }
     }
-    if(count==0)
+    if(matches==0)
     {
         printf("No Person named %s found\n",search_name);
     }
-    if (count>1)
+    if (matches>1)
     {
         printf("\t ***%d people named %s found***\n",count,search_name);
     }
