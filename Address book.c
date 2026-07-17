@@ -197,7 +197,7 @@ void search()
     {
         if(strcmp(search_name,p[i].name)==0)
         {
-            Printf("Details of %s\n",search_name);
+            printf("Details of %s\n",search_name);
             printPerson(i);
             matches++;
         }
