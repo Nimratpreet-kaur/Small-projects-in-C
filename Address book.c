@@ -30,7 +30,15 @@ int main()
     while (1)
     {
         printf("1.Add Name\t2.List    \t3.Modify \n4.Exit    \t5.Search  \t6.Delete\n");
-        scanf("%d", &to_do);
+        printf("Enter Your Choice:\n");
+        if(scanf("%d",&to_do) !=1)
+        {
+            cleanBuffer();
+            printf("Invalid input. Please enter a number.\n");
+            continue;
+        }
+        cleanBuffer();
+
         if (to_do == 1)
         {
             addName();
@@ -55,6 +63,10 @@ int main()
         {
             del();
         }
+        else 
+        {
+            printf("Invalid Choice!Try again");
+        }
     }
 }
 void cleanBuffer()
@@ -62,8 +74,24 @@ void cleanBuffer()
     int c;
     while((c = getchar()) != '\n' && c !=EOF);
 }
+
+//*to remove new line added by using fgets and scanf both 
+void removeNewline(char *str) 
+{
+    size_t len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n') 
+    {
+        str[len - 1] = '\0';
+    }
+}
+
 void addName()
 {
+    if (count>100)
+    {
+        printf("No more space");
+        return;
+    }
     printf("Name:");
     fgets(p[count].name,30,stdin);
     cleanBuffer();
@@ -78,6 +106,7 @@ void addName()
     cleanBuffer();
     printf("Mobile Number:");
     scanf("%ld", &p[count].mobile_no);
+    cleanBuffer();
     printf("Sex:");
     fgets(p[count].sex,10,stdin);
     cleanBuffer();
@@ -117,6 +146,7 @@ void modify()
     printf("Enter mobile nummber of person you wish to modify:");
     long int modify_number;
     scanf("%ld", &modify_number);
+    cleanBuffer();
     int n = 0;
     for (int i = 0; i < count; i++)
     {
@@ -143,6 +173,7 @@ void modify()
             cleanBuffer();
             printf("Mobile number:");
             scanf("%ld",&p[i].mobile_no);
+            cleanBuffer();//to clean new line
             printf("Sex:");
             fgets(p[count].sex,10,stdin);
             cleanBuffer();
@@ -186,18 +217,26 @@ void del()
     long int search_no;
     printf("Enter Phone Number :\n");
     scanf("%ld",&search_no);
-    int a;//index of matched number.
-    for(int i =0; i<15;i++)
+    cleanBuffer();
+    int found = -1;
+    for (int i = 0;i< count;i++)
     {
         if (search_no == p[i].mobile_no)
         {
-            a = i;
-            count--;
+            found =i;
         }
     }
-    for(int i=a;i<count;i++)
+    if(found==-1)
     {
-        p[i]=p[i+1];
+        printf("Phone Number %ld not found!",search_no);
+    }
+    else
+    {
+        for(int i= found;i<count -1;i++)
+        {
+            p[i]=p[i+1];
+        }
+        count--;
     }
     printf("\t***Information Deleted seccessfully***\n");
 }
